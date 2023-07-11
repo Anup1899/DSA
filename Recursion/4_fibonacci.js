@@ -5,6 +5,16 @@ function fibonacci(n){
     
 }
 
-console.log(
-    fibonacci(6)
-);
+console.log(fibonacci(6));
+
+
+
+
+function MYfibonacci(n, prev, curr, i){
+    if(i === n) return curr;
+
+    return MYfibonacci(n, curr, prev+curr, i+1);
+
+}
+
+console.log(MYfibonacci(8, 0, 1, 2));
