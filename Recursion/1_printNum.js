@@ -4,6 +4,7 @@ function printNum(int){
     printNum(int-1)
     console.log(int);
 
+    
 }
 
 printNum(5);
