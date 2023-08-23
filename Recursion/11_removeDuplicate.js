@@ -1,27 +1,63 @@
-const alphabetArr = new Array(26).fill(false)
+// const alphabetArr = new Array(26).fill(false)
 
-function RemoveDuplicates(str,newStr="", idx=0){
 
-    if(idx === str.length){
-        return newStr;
-    }
+// function RemoveDuplicates(str,newStr="", idx=0){
 
-    const letter = str.charAt(idx);
-    const char =  letter.charCodeAt(0) - "a".charCodeAt(0);
-    const checkAvailable = alphabetArr[char];
+//     if(idx === str.length){
+//         return newStr;
+//     }
 
-    // console.log(letter - "a");
+//     const letter = str.charAt(idx);
+//     const char =  letter.charCodeAt(0) - "a".charCodeAt(0);
+//     const checkAvailable = alphabetArr[char];
 
-    // console.log(checkAvailable);
+//     // console.log(letter - "a");
+
+//     // console.log(checkAvailable);
     
-    if(!checkAvailable){
-        newStr += letter;
-        alphabetArr[char] = true;
+//     if(!checkAvailable){
+//         newStr += letter;
+//         alphabetArr[char] = true;
+//     }
+
+//     return RemoveDuplicates(str, newStr, idx+1)
+// }
+
+// console.log(
+//     RemoveDuplicates("aaabbbcccc")
+// );
+
+
+function RemoveDuplicates(str, newStr="", arr = new Array(26).fill(false), idx = 0){
+    
+    if(idx === str.length){
+        console.log(newStr);
+        return
     }
 
-    return RemoveDuplicates(str, newStr, idx+1)
+    const char =  str[idx]
+
+    if(char >= "A" && char <= "Z"){
+        const index =  char.charCodeAt(0) - "A".charCodeAt(0)
+        if(!arr[index]){
+            arr[index] = true
+            newStr  += char
+        }
+    }else if(char >= "a" && char <= "z"){
+        const index =  char.charCodeAt(0) - "a".charCodeAt(0)
+        if(!arr[index]){
+            arr[index] = true
+            newStr  += char
+        }
+    }
+    else{
+        newStr += char
+    }
+
+    RemoveDuplicates(str, newStr, arr, idx+1)
+
 }
 
-console.log(
-    RemoveDuplicates("aaabbbcccc")
-);
+
+RemoveDuplicates("aabbccddee")
+RemoveDuplicates("a..b..c..bca")

@@ -28,7 +28,7 @@ function checkSortedArray(arr, idx = 0){
         checkSortedArray(arr, idx+1)
     }
     else{
-        if(arr[idx] > arr[idx -1]){
+        if(arr[idx] >= arr[idx -1]){
         return checkSortedArray(arr, idx+1)
         }
         else{
