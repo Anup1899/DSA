@@ -1,134 +1,93 @@
 // Time Complexity ---> n square
 
-function saveBoard(board, possibilitiesArr){
+function isSafe(board, row, col){
 
-    const newPattern = []
-
-    for(let row = 0; row < board.length; row++){
-        let str =""; 
-        for(let col=0; col < board[row].length; col++){4
-            if(board[row][col] === "Q"){
-                str += "Q"
-            }
-            else{
-                str +="."
-            }
+    // Horizontal
+    for(let i = 0; i< board.length; i++){
+        if(board[row][i] === "Q"){
+            return false;
         }
-
-        newPattern.push(str)
+    }
+    
+    // Vertical
+    for(let j = 0; j< board.length; j++){
+        if(board[j][col] === "Q"){
+            return false;
+        }
     }
 
-    possibilitiesArr.push(newPattern)
-    console.log(possibilitiesArr);
-    return 
+    // Top Right
+    for(let r1= row, c1=col; r1>=0 && c1 < board.length  ; --r1, c1++){
+        if(board[r1][c1] === "Q"){
+            return false;
+        }
+    }
+    
+    // Top Left
+    for(let r2= row, c2= col; r2>=0 && c2 >=0 ; --r2, --c2){
+        if(board[r2][c2] === "Q"){
+            return false
+        }
+    }
+    
+    // Bottom Right
+    for(let r3 = row, c3 = col; r3 < board.length && c3 <board.length ; ++r3, c3++){
+        if(board[r3][c3] === "Q"){
+            return false
+        }
+    }
+
+
+    // Bottom Left
+    for(let r4 = row, c4= col; r4 < board.length && c4 >=0; ++r4, c4--){
+        if(board[r4][c4] === "Q"){
+            return false
+        } 
+    }
+
+
+
+    return true;
 }
 
+function createBoard(n){
+    return new Array(n).fill().map(item=>{
+        return new Array(n).fill(0)
+    })
+}
 
-function checkSafe(board, row, col){
-
-    const r = row;
-    const c = col;
-    // Check Horizontal
-    for(let j= 0; j< board.length; j++){
-        if(board[row][j] === "Q"){
-            return false;
-        }
-    }
-
-    // Check Vertical
-    for(let i= 0; i< board.length; i++){
-        if(board[i][col] === "Q"){
-            return false;
-        }
-    }
-
-    // Check Upper Right
-    for(let i =r, j=c; i >=0 && j< board.length; i--, j++){
-        if(board[i][j] === "Q"){
-            return false;
-        }
-    }
-    // Check Upper Left
-    for(let i =r, j=c; i >=0 && j>=0; i--, j--){
-        if(board[i][j] === "Q"){
-            return false;
-        }
-    }
-
-    // Check Lower Right
-    for(let i =r, j=c; i <board.length && j< board.length; i++, j++){
-        if(board[i][j] === "Q"){
-            return false;
-        }
-    }
- 
-    // Check Lower Left
-    for(let i =r, j=c; i <board.length && j>=0; i++, j--){
-        if(board[i][j] === "Q"){
-            return false;
-        }
-    }
-
-    return true
-
-} 
-
-
-function helper(board, possibilitiesArr, col){
+function placeQueen(n, board= createBoard(n), col=0){
 
     if(col === board.length){
-        saveBoard(board, possibilitiesArr);
-       
-    }
+        const combination =[]
+        for(let i=0; i< board.length; i++){
+            let str=""
+            for(let j=0; j<board.length; j++){
 
-    
-    // Placing Queen in every column
-    for(let row=0; row< board.length; row++){
-        
-        const isSafe = checkSafe(board, row, col);
-
-        if(isSafe){
-            board[row][col] = "Q";
-
-            helper(board, possibilitiesArr, col+1);
-            
-            // If the placement is incorrect
-            board[row][col] = "";
-
+                if(board[i][j] === "Q"){
+                    str += "Q"
+                }
+                else{
+                    str += "."
+                }
+            }
+            combination.push(str);
         }
 
+        console.log(combination);
+        return;
     }
+    
+    for(let i=0; i< board.length; i++){
 
+        if(isSafe(board, i, col)){
+
+            board[i][col] = "Q";
+            placeQueen(n, board, col+1);
+            // Queen is Removed while backtracking
+            board[i][col] = 0
+        }
+    }
 }
 
-const placeQueen  = (n)=>{
-    // const chessBoard = new Array(n).fill("-");
-    // const row = new Array(n).fill("-");
-    // chessBoard.fill(row);
-
-    // let chessBoard = [];
-    // const row = [];
-
-    // for(let i=0; i< n; i++){
-    //     row.push(0);
-    //     // chessBoard.push(0)
-    // }
-    
-    // for(let j=0; j< n; j++){
-    //     chessBoard = [...chessBoard, row]
-    // }
-    
-
-    // for(let i=0; i< chessBoard.length; i++){
-    //     chessBoard.push(row);
-    // }
-    
-    const chessBoard = [ [ 0, 0, 0, 0 ], [ 0, 0, 0, 0 ], [ 0, 0, 0, 0 ], [ 0, 0, 0, 0 ] ];
-    const possibilitiesArr = [];
-    
-    helper(chessBoard,possibilitiesArr,0);
-}
-
-console.log(
-    placeQueen(4)
-);
+placeQueen(4)
