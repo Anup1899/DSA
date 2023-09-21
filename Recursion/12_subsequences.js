@@ -8,18 +8,38 @@
 
 //Total number of Combinations of Strings are 2^n
 
-function printAllSubsequences(str, newStr = "", idx = 0) {
-  if (idx === str.length) {
+// function printAllSubsequences(str, newStr = "", idx = 0) {
+//   if (idx === str.length) {
+//     console.log(newStr);
+//     return;
+//   }
+
+//   const char = str.charAt(idx);
+
+//   // With Char
+//   printAllSubsequences(str, newStr + char, idx + 1);
+//   // Without Char
+//   printAllSubsequences(str, newStr, idx + 1);
+// }
+
+function printAllSubsequences(str, newStr="", idx=0){
+
+  if(idx === str.length){
     console.log(newStr);
     return;
   }
 
-  const char = str.charAt(idx);
+  const charAtidx = str[idx];
 
+  // console.log(str, newStr, idx);
+  
   // With Char
-  printAllSubsequences(str, newStr + char, idx + 1);
+  printAllSubsequences(str, newStr + charAtidx, idx+1);
+
   // Without Char
-  printAllSubsequences(str, newStr, idx + 1);
+  printAllSubsequences(str, newStr, idx+1)
+
+
 }
 
 printAllSubsequences("abc");

@@ -28,24 +28,29 @@ let last = -1;
 
 // FirstAndLastIndex("abcdeafghaijkal", 0, "a");
 
+let firstIdx = -1;
+let lastIdx = -1;
+function FirstAndLastIndex(str, char, index=0){
 
-function FirstAndLastIndex(str, char ,idx = 0 ){
-    if(idx === str.length){
-        console.log(str.length);
-        console.log(first);
-        console.log(last);
+    if(index=== str.length){
+        console.log("First IDX", firstIdx);
+        console.log("Last IDX", lastIdx);
         return;
     }
 
-    if(str[idx]=== char){
-        if(first === -1 && last === -1){
-            first = last = idx;
+    if(str[index] === char){
+
+        if(firstIdx === -1 && lastIdx === -1 ){
+            firstIdx = index;
+            lastIdx = index;   
         }
         else{
-            last = idx;
+            lastIdx = index
         }
     }
-    FirstAndLastIndex(str, char, idx+1)
+
+    FirstAndLastIndex(str,char, index+1)
+
 }
 
-FirstAndLastIndex("abcdeafghaijkal", "a",0)
+FirstAndLastIndex("abcdeafghaijkal", "a", 0)

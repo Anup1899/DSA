@@ -28,36 +28,54 @@
 // );
 
 
-function RemoveDuplicates(str, newStr="", arr = new Array(26).fill(false), idx = 0){
+// function RemoveDuplicates(str, newStr="", arr = new Array(26).fill(false), idx = 0){
     
-    if(idx === str.length){
-        console.log(newStr);
-        return
-    }
+//     if(idx === str.length){
+//         console.log(newStr);
+//         return
+//     }
 
-    const char =  str[idx]
+//     const char =  str[idx]
 
-    if(char >= "A" && char <= "Z"){
-        const index =  char.charCodeAt(0) - "A".charCodeAt(0)
-        if(!arr[index]){
-            arr[index] = true
-            newStr  += char
-        }
-    }else if(char >= "a" && char <= "z"){
-        const index =  char.charCodeAt(0) - "a".charCodeAt(0)
-        if(!arr[index]){
-            arr[index] = true
-            newStr  += char
-        }
-    }
-    else{
-        newStr += char
-    }
+//     if(char >= "A" && char <= "Z"){
+//         const index =  char.charCodeAt(0) - "A".charCodeAt(0)
+//         if(!arr[index]){
+//             arr[index] = true
+//             newStr  += char
+//         }
+//     }else if(char >= "a" && char <= "z"){
+//         const index =  char.charCodeAt(0) - "a".charCodeAt(0)
+//         if(!arr[index]){
+//             arr[index] = true
+//             newStr  += char
+//         }
+//     }
+//     else{
+//         newStr += char
+//     }
 
-    RemoveDuplicates(str, newStr, arr, idx+1)
+//     RemoveDuplicates(str, newStr, arr, idx+1)
 
-}
+// }
 
+// function RemoveDuplicates(str, newStr="", idx = 0, arr=  new Array(26).fill(false)){
+
+//     if(idx === str.length){
+//         console.log(newStr);
+//         return
+//     }
+
+//     const char = str[idx];
+
+//     const index =  char - "a"
+     
+//     if(arr[index] === false){
+//         newStr += char;
+//         arr[index] = true;
+//     }
+
+//     RemoveDuplicates(str, newStr, idx+1 ,arr)
+
+// }
 
 RemoveDuplicates("aabbccddee")
-RemoveDuplicates("a..b..c..bca")

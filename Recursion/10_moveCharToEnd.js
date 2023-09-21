@@ -26,21 +26,38 @@
 //     MoveCharToTheEnd("xxxsacadcfsdfgfa","x")
 // );
 
-function MoveCharToTheEnd(str, char, newStr="",idx=0, repeat=""){
+// function MoveCharToTheEnd(str, char, newStr="",idx=0, repeat=""){
     
-    if(idx === str.length){
-        const st = newStr + repeat
-        console.log(st);
+//     if(idx === str.length){
+//         const st = newStr + repeat
+//         console.log(st);
+//         return;
+//     }
+
+//     if(str[idx] === char){
+//         repeat += char;
+//     }else{
+//         newStr += str[idx]
+//     }
+
+//     MoveCharToTheEnd(str,char, newStr, idx+1, repeat)
+// }
+
+
+function MoveCharToTheEnd(str, char, newStr="", chrStr="", idx = 0){
+
+    if(idx=== str.length){
+        console.log( newStr + chrStr);
         return;
     }
 
     if(str[idx] === char){
-        repeat += char;
-    }else{
+        chrStr += str[idx]
+    }
+    else{
         newStr += str[idx]
     }
 
-    MoveCharToTheEnd(str,char, newStr, idx+1, repeat)
+    MoveCharToTheEnd(str, char, newStr, chrStr, idx+1)
 }
-
 MoveCharToTheEnd("abcdexxfghxijkxxxl", "x")
