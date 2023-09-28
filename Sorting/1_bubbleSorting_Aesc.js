@@ -1,5 +1,6 @@
 // Bubble Sorting ---> Swap is Done for every iteration
 // Largest Element is pushed Back in the Array
+// At every i th round the i th largest element is placed into it's correct position
 
 // Time Complexity n^2
 
