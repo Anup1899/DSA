@@ -2,6 +2,10 @@
 // Pivot and Partition
 //  Pivot can be
 // Random, Median, 1st Element, Last Element (Recommended)
+// Pivot is the central point around which the sorting will occur 
+// Partition is the step where elements are placed around the pivot
+    // Expection is to place the element to the left which are lesser than the pivot and place the element to the write which are greater than the pivot
+    // This is how the pivot will automatically will be placed at the write position
 
 // Time Complexity
 // Worst Case : O(n^2)
