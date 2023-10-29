@@ -18,49 +18,95 @@
 // High is the last index of an array
 // Creating space for the elements which are lesser than pivot
 
-function sortArray(arr, low, high) {
-  if (high > low) {
-    const pivotIndex = partition(arr, low, high);
+// function sortArray(arr, low, high) {ghf
+//   if (high > low) {
+//     const pivotIndex = partition(arr, low, high);
 
-    // Lower Values
-    sortArray(arr, low, pivotIndex - 1);
-    // Higher Values
-    sortArray(arr, pivotIndex + 1, high);
+//     // Lower Values
+//     sortArray(arr, low, pivotIndex - 1);
+//     // Higher Values
+//     sortArray(arr, pivotIndex + 1, high);
+//   }
+// }
+
+// function partition(arr, low, high) {
+//   const pivot = arr[high];
+
+//   let i = low - 1;
+
+//   for (let j = low; j < high; j++) {
+//     if (arr[j] < pivot) {
+//       ++i;
+//     }
+//   }
+
+//   ++i;
+//   const temp = arr[i];
+//   arr[i] = pivot;
+//   arr[high] = temp;
+
+//   return i;
+// }
+
+// function quickSortAesc(arr, low = 0, high = arr.length - 1) {
+//   if (high === 0) {
+//     return arr;
+//   }
+
+//   sortArray(arr, low, high);
+
+//   console.log(arr);
+// }
+
+
+function sortedArr(arr, low, high){
+
+  if(high > low){
+    const pivotIndex = partition(arr, low, high)
+    
+    // Left 
+
+    sortedArr(arr,low, pivotIndex -1)
+    console.log(pivotIndex);
+    console.log("left",arr);
+    
+    // Right 
+    sortedArr(arr, pivotIndex+1, high)
+    console.log("right",arr);
   }
 }
 
-function partition(arr, low, high) {
-  const pivot = arr[high];
 
-  let i = low - 1;
+function partition(arr, low, high){
+  const pivot = arr[high]
 
-  for (let j = low; j < high; j++) {
-    if (arr[j] < pivot) {
-      ++i;
-      // Swap
+  let i= low - 1;
+  for(let j = low; j< high; j++){
+    if(arr[j] < pivot){
+      ++i
       const temp = arr[j];
-      arr[j] = arr[i];
-      arr[i] = temp;
+      arr[j] = arr[i]
+      arr[i]  = temp;
     }
   }
 
   ++i;
-  const temp = arr[i];
-  arr[i] = pivot;
-  arr[high] = temp;
+  const temp1 = arr[i]
+  arr[i] = pivot
+  arr[high] = temp1;
 
   return i;
 }
 
-function quickSortAesc(arr, low = 0, high = arr.length - 1) {
-  if (high === 0) {
-    return arr;
+function quickSortAesc(arr, low =0, high = arr.length -1){
+  
+  if(high === 0){
+    return arr
   }
 
-  sortArray(arr, low, high);
+  sortedArr(arr, low, high)
 
   console.log(arr);
 }
-
 
 quickSortAesc([6,3,9,5,2,8])
