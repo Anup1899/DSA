@@ -6,7 +6,7 @@
 function isPossibleSolution(stall, m, mid){
 
     let totalCows = 1;
-
+    stall.sort((a,b)=> a-b)
     let lastPos = stall[0];
 
     for(let i =0; i< stall.length; i++){
@@ -24,14 +24,17 @@ function isPossibleSolution(stall, m, mid){
 
 function aggressiveCow(stall, m){
 
-    let start = 0;
-    let end = stall.reduce((acc, item)=>{ return Math.max(item, acc)},0)
-    
-    let mid = Math.ceil(start + (end - start)/2);
+    let min = stall.reduce((acc, item)=>{ return Math.min(item, acc)}, Number.POSITIVE_INFINITY)
+    let max = stall.reduce((acc, item)=>{ return Math.max(item, acc)},0)
+
+    let start = 0
+    let end = max - min;
+    let mid = Math.floor(start + (end - start)/2);
 
     let ans = -1;
 
-    while(start < end){
+    while(start <= end){
+        console.log(mid,start,end);
 
         if(isPossibleSolution(stall, m, mid)){
             ans = mid;
@@ -41,7 +44,7 @@ function aggressiveCow(stall, m){
             end = mid - 1;
         }
 
-     mid = Math.ceil(start + (end - start)/2);
+     mid = Math.floor(start + (end - start)/2);
     }
 
     return ans;
