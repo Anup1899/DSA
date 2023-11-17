@@ -56,11 +56,36 @@ class SinglyLinkedList{
 
         return newNode;
     }
+
+    //Insert in the Middle
+    InsertionAtMiddle(element, pos){
+        
+        if(position === 1){
+            this.InsertionAtHead(element)
+            return;
+        }
+        let temp=this.head, count = 1;
+        while(count < pos -1){
+            temp = temp.next;
+            count ++
+        }
+        
+        // Insert at Last
+        if(temp.next === null){
+            this.InsertionAtTail(element)
+        }
+        
+        const newNode = new Node(element);
+        newNode.next = temp.next;  
+        temp.next = newNode;
+
+        return newNode
+    }
 }
 
 const LinkedList = new SinglyLinkedList();
 
-LinkedList.InsertionAtHead(30)
+// LinkedList.InsertionAtHead(30)
 LinkedList.InsertionAtHead(20)
 LinkedList.InsertionAtHead(10)
 
@@ -69,3 +94,7 @@ LinkedList.InsertionAtTail(50)
 LinkedList.InsertionAtTail(60)
 
 
+LinkedList.InsertionAtMiddle(30, 3)
+LinkedList.InsertionAtMiddle(70, 1)
+
+console.log(LinkedList.head);
