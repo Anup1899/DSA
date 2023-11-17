@@ -24,10 +24,9 @@ function isPossibleSolution(stall, m, mid){
 
 function aggressiveCow(stall, m){
 
-    stall.sort((a,b)=> a-b);
     let start = 0;
-    let end = stall[ stall.length -1];
-
+    let end = stall.reduce((acc, item)=>{ return Math.max(item, acc)},0)
+    
     let mid = Math.ceil(start + (end - start)/2);
 
     let ans = -1;
