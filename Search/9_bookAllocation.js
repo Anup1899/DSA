@@ -1,4 +1,8 @@
-// Array of pages is given [10,20,30,40]
+// Array of pages is given [10,20,30,40]  --> 100 - 10
+// 10   20 30 40  --> (10, 90) --> 90
+// 10 20    30 40 --> (30, 70) --> 70
+// 10 20 30    40 --> (60, 40) ---> 60
+// 60
 // IMPORTANT -- Arrray of pages may not be sorted
     //Arrray can be unsorted
 
