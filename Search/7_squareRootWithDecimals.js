@@ -27,7 +27,7 @@ function find_SquareRooot_2Decimal(num){
 
     const nearestSquareRoot = integerSquareRoot(num)
 
-    if(nearestSquareRoot === Math.ceil(nearestSquareRoot)){
+    if(nearestSquareRoot * nearestSquareRoot === num){
         return nearestSquareRoot
     }
 
@@ -55,5 +55,5 @@ function find_SquareRooot_2Decimal(num){
 }
 
 console.log(
-    find_SquareRooot_2Decimal(324)
+    find_SquareRooot_2Decimal(25)
 );
