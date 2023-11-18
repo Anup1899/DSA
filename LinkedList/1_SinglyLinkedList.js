@@ -60,7 +60,7 @@ class SinglyLinkedList{
     //Insert in the Middle
     InsertionAtMiddle(element, pos){
         
-        if(position === 1){
+        if(pos === 1){
             this.InsertionAtHead(element)
             return;
         }
@@ -81,6 +81,22 @@ class SinglyLinkedList{
 
         return newNode
     }
+
+    //Delete
+    DeleteNode(pos){
+        if(pos === 1){ //Delete From Head
+            this.head = this.head.next;
+            return
+        }
+
+        let count = 1, temp = this.head;
+        while(count < pos -1){
+            temp = temp.next;
+            ++count;
+        }
+        temp.next = temp.next.next;
+        return;
+    }
 }
 
 const LinkedList = new SinglyLinkedList();
@@ -93,8 +109,11 @@ LinkedList.InsertionAtTail(40)
 LinkedList.InsertionAtTail(50)
 LinkedList.InsertionAtTail(60)
 
-
 LinkedList.InsertionAtMiddle(30, 3)
 LinkedList.InsertionAtMiddle(70, 1)
 
+console.log(LinkedList.head);
+LinkedList.DeleteNode(2)
+console.log(LinkedList.head);
+LinkedList.DeleteNode(6)
 console.log(LinkedList.head);
