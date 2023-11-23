@@ -2,6 +2,9 @@
 // IMPORTANT TREMS --- Node, Root, Child, Parent, Siblings, Ancsetors, Leaf Node
 //Binary Tree -- Tree which <=2 children
 
+//Level Order Traversal is called Breadth First Search
+//PreOrder, PostOrder and InOrder Traversal is called Depth First Search
+
 const TreeNode = [1,2,4,-1,-1, 5, -1, -1, 3, -1, 6, -1, -1]
 
 class Node{
