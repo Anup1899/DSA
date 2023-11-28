@@ -2,8 +2,9 @@
 // IMPORTANT TREMS --- Node, Root, Child, Parent, Siblings, Ancsetors, Leaf Node
 //Binary Tree -- Tree which <=2 children
 
-//Level Order Traversal is called Breadth First Search
-//PreOrder, PostOrder and InOrder Traversal is called Depth First Search
+//Level Order Traversal is called Breadth First Search (BFS)
+    //BFS follows First In First Out (FIFO)
+//PreOrder, PostOrder and InOrder Traversal is called Depth First Search (DFS)
 
 const TreeNode = [1,2,4,-1,-1, 5, -1, -1, 3, -1, 6, -1, -1]
 
@@ -79,6 +80,35 @@ class BinaryTree{
 
         return postOrderTraversalArray
     }
+
+    //Level Order Traversal
+        //Follows Queue Approach (FIFO)
+    LevelOrderTraversal(root){
+        const levelNodes = [];
+        const queueArr = [root]
+        queueArr.push(null)
+
+        while(queueArr.length){
+            const node = queueArr.shift();
+
+            if(node === null){
+                if(queueArr.length){
+                    queueArr.push(null)
+                    levelNodes.push(null)
+                }
+            }else{
+                levelNodes.push(node.data);
+                
+                if(node.left) queueArr.push(node.left)
+                if(node.right) queueArr.push(node.right)
+            }
+
+
+        }
+        
+        return levelNodes;
+    }
+
 }
 
 const Tree = new BinaryTree()
@@ -98,3 +128,7 @@ console.log(inOrderTraversalTree);
 console.log("PostOrder Tree");
 const postOrderTraversalTree = Tree.PostOrderTraversal(myBinaryTree);
 console.log(postOrderTraversalTree);
+
+console.log("Level Order Tree");
+const LevelOrderTraversalTree = Tree.LevelOrderTraversal(myBinaryTree);
+console.log(LevelOrderTraversalTree);
