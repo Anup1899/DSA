@@ -8,6 +8,12 @@
 
 //So we will have diameter of all the three cases Max of all the tree cases will be the Diameter of the Tree
 
+//There are two approaches to find the diameter of the tree
+//Approach I takes the Big O of n square time complexity --- It finds the diameter and height differently which would take the node to revisit two times
+//Approach II take the linear time complexity --- It finds the Diameter and Height simultaneously
+
+//Dimatere of Tree = Math.max(Diameter of Left Subtree, Diameter of Right Subtree, Height of the Node)
+
 const TreeNode = [1,2,4,-1,-1, 5, -1, -1, 3, -1, 6, -1, -1]
 
 class Node{
@@ -15,6 +21,14 @@ class Node{
         this.data = element;
         this.left = null
         this.right = null
+    }
+}
+
+
+class TreeInfo{
+    constructor(ht, dia){
+        this.height  = ht;
+        this.diameter = dia;
     }
 }
 
@@ -60,6 +74,30 @@ class BinaryTree{
 
         return Math.max(leftSubTreeDiameter, rightSubTreeDiameter, diameterThroughRootNode);
     }
+
+    //APPROACH 2 O(n)
+    optimisedDiameterOfTree(root){
+
+        if(root === null){
+            return new TreeInfo(0,0)
+        }
+        
+        const leftSubtreeInfo = this.optimisedDiameterOfTree(root.left)
+        const rightSubtreeInfo = this.optimisedDiameterOfTree(root.right)
+
+
+        const leftSubTreeDiamter = leftSubtreeInfo.diameter
+        const rightSubTreeDiamter = rightSubtreeInfo.diameter
+        const diameterThroughRootNode = leftSubtreeInfo.height + rightSubtreeInfo.diameter + 1;
+
+        const DiameterOfTree = Math.max(leftSubTreeDiamter, rightSubTreeDiamter, diameterThroughRootNode);
+
+
+        const heightOfTree = Math.max(leftSubtreeInfo.height, rightSubtreeInfo.height) + 1;
+
+        return new TreeInfo(heightOfTree, DiameterOfTree)
+
+    }   
 }
 
 const Tree = new BinaryTree();
@@ -71,3 +109,7 @@ console.log(myBinaryTree);
 console.log("Diameter of Tree");
 const diameter = Tree.diameterOfTree(myBinaryTree)
 console.log(diameter);
+
+console.log("Optimized Dimater");
+const optimizedDimater = Tree.optimisedDiameterOfTree(myBinaryTree)
+console.log(optimizedDimater);
