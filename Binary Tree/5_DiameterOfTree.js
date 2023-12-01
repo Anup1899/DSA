@@ -88,7 +88,7 @@ class BinaryTree{
 
         const leftSubTreeDiamter = leftSubtreeInfo.diameter
         const rightSubTreeDiamter = rightSubtreeInfo.diameter
-        const diameterThroughRootNode = leftSubtreeInfo.height + rightSubtreeInfo.diameter + 1;
+        const diameterThroughRootNode = leftSubtreeInfo.height + rightSubtreeInfo.height + 1;
 
         const DiameterOfTree = Math.max(leftSubTreeDiamter, rightSubTreeDiamter, diameterThroughRootNode);
 
