@@ -39,5 +39,49 @@
 // Every Time we give the same input it will return the same output
 
 
+function simpleHashing(str, len){
+
+    let total = 0
+    for(let i = 0; i< str.length; i++){
+        total += str.charCodeAt(i) 
+    }
+
+    const hashedValue = total % len
+    console.log(hashedValue);
+}
+
+simpleHashing("Anup", 12)
+simpleHashing("Gunjan", 12)
+simpleHashing("Ajksfdsfjfsfsdnfj", 12)
 
 
+// There is an issue with the simple hasing 
+    // Not of constant time
+    // Depends upon the length of the string
+    // Could have been little more random
+
+// For better hashing we introduce
+    // Constant time --> By restricting the function to the maximum loop constraints
+    // By introducing Prime Number into the operation ---> Introducing prime number leads to the mostly unique solutions and minimize the number of colossions
+
+function betterHashing(str, len){
+    let total = 0;
+    const PrimeNumber = 41;
+    for(let i=0; i< Math.min(str.length, 100); i++){
+        total += total * PrimeNumber + str.charCodeAt(i);
+        
+    }
+
+    console.log(total% len);
+}
+
+
+betterHashing("Anup", 13)
+betterHashing("Gunjan", 13)
+betterHashing("dfssfsf", 13)
+
+
+//Collision in Hashing
+// We fix it by linear programming, Separate Chaining
+// Linear Programming is like storing data in a single array, if the collision occurs then the search for the next consecutive empty space in an array
+// Separate Chaining --> Data is stores in each index in the object, if the collission occurs a new entry is created in the object
