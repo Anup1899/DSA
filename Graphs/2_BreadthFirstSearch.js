@@ -23,14 +23,17 @@ class BFS{
         const queue = []
         queue[0] = 0;
 
+        let str = ""
+
+
         while(queue.length){
             const queueEle = queue.shift();
 
 
             if(visitedArray[queueEle] === false){
                 visitedArray[queueEle] = true;
-                console.log(queueEle);
-                
+                // console.log(queueEle);
+                str += queueEle + ", "
                 const edgeList = this.adjacencyArr[queueEle];
 
                 for(let i=0; i< edgeList.length; i++){
@@ -39,7 +42,7 @@ class BFS{
             }
         }
 
-
+        console.log(str);
     }
 }
 
