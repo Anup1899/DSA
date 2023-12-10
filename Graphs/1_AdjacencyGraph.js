@@ -25,7 +25,10 @@
     // Directed Unweighted Graph
 
 // Storing Graphs
-    // Adjacency List -- List of List
+    // Adjacency List -- List of List (Most Commonly Used)
+    // Adjaceny Matrix -- Unnecessary Memory is used --- Each Node will store values for all the vertices 
+    // Implicit Matrix -- 
+    // Edge List -- Specifically used when we need to sort Edge List {Sorting will be done on the basis of different parameters}
 
 // Adjacency List
     // Store the neighbours of the Vertex
