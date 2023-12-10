@@ -1,4 +1,4 @@
-// Time Complexity is O(V+E)
+// Time Complexity is O(V+E)  Vertices + Edges
 
 
 class Vertex{
