@@ -1,4 +1,12 @@
-// Time Complexity is O(V+E)
+//This method is ususally used for graph traversal
+
+//  1 ----> 2 ----> 3
+//      4 ----> 5
+
+// The above two lines is graph but they are not connected
+
+// To solve it we need to loop over the visited array;
+
 
 
 class Vertex{
@@ -18,34 +26,35 @@ class BFS{
 
     createGraph(index, vertexInfo){
         this.adjacencyArr[index].push(vertexInfo)
-    }
+    } 
 
-    bfsForGraph(){
-        const visitedArray = new Array(this.adjacencyArr.length).fill(false);
-
-        const queue = []
-        queue[0] = 0;
-
-        let str = ""
-
+    traversal(visitedArray, start){
+        const queue = [];
+        queue.push(start)
 
         while(queue.length){
             const queueEle = queue.shift();
 
-
             if(visitedArray[queueEle] === false){
                 visitedArray[queueEle] = true;
-                // console.log(queueEle);
-                str += queueEle + ", "
-                const edgeList = this.adjacencyArr[queueEle];
+                console.log(queueEle);
 
-                for(let i=0; i< edgeList.length; i++){
-                    queue.push(edgeList[i].destination)
+                const edgeList = this.adjacencyArr[queueEle]
+
+                for(let i=0; i < edgeList.length; i++){
+                    queue.push( edgeList[i].destination )
                 }
             }
-        }
 
-        console.log(str);
+        }
+    }
+
+    bfsForGraph(){
+        const visitedArray= new Array(this.adjacencyArr.length).fill(false)
+
+        for(let i=0; i< visitedArray.length; i++){
+            this.traversal(visitedArray, i)
+        }
     }
 }
 
@@ -75,4 +84,4 @@ bfsGraph.createGraph(5, new Vertex(5,6))
 bfsGraph.createGraph(6, new Vertex(6,5))
 
 
-bfsGraph.bfsForGraph();
+bfsGraph.bfsForGraph()
