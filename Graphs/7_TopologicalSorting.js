@@ -1,3 +1,9 @@
+// Topological Sorting 
+// Directed Acyclic Graph is a directed graph with no cycle
+// Topological Sorting is used only for DAGs
+// It is a linear order of vertices such that every directed edge u->v the vertex u comes before v in the order
+// Time Complexity O(V+E)
+
 class Vertex{
     constructor(src, desti){
         this.source = src;
