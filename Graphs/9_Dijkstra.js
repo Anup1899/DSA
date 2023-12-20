@@ -8,6 +8,10 @@
 // Dijkstra's Algorithm is based on BFS also called as Greedy algorithm because it is greedy to find the shortest path
 // Queue is used in BFS but in Dijkstra's Algorithm we use PRIORITY Queue
 
+//Time Complexity O(E + E(log V))
+
+// Dijkstra's Algorithm is used for positive weights
+
 class Vertex {
   constructor(src, dest, wegt) {
     this.source = src;
