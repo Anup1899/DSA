@@ -3,6 +3,7 @@
 
 
 //Step 1:-- Perfom operation V-1 times
+// V-1 times is just because the case may be the shortest distane from one node to another may pass from all the node where the node covered to reach the last node is V-1
 
 
 //Bellmanford does not work for the negative weight cycle
