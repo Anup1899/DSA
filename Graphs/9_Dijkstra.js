@@ -58,7 +58,7 @@ class Dijkstra {
     // Sort pQ based on the minimum distance
     while (priorityQueue.length) {
       const pairNode = priorityQueue.shift();
-      console.log("Current Node :-- node ->", pairNode.node, " distance :--", pairNode.distance);
+    //   console.log("Current Node :-- node ->", pairNode.node, " distance :--", pairNode.distance);
 
       if (visitedArray[pairNode.node] === false) {
         visitedArray[pairNode.node] = true;
