@@ -5,7 +5,9 @@
 //Step 1:-- Perfom operation V-1 times
 
 
- //Bellmanford does not work for the negative weight cycle
+//Bellmanford does not work for the negative weight cycle
+// To check for negative weight cycle 
+// Bellmanford Algorithm is used again 
 
 class Vertex{
     constructor(src, dest, wegt){
@@ -49,6 +51,29 @@ class Bellmanford{
             }
         }
 
+
+        //To check negative cycle
+        for(let i=0; i< totalVertices - 1; i++){
+
+            for(let j = 0; j< totalVertices; j++){
+
+                const edges = this.graph[j]
+                for(let k=0; k< edges.length; k++){
+
+                    const src = edges[k].source;
+                    const desti = edges[k].destination;
+                    const weit = edges[k].weight;
+
+
+                    if(distanceArrray[src] + weit < distanceArrray[desti] && distanceArrray[src] !== Number.POSITIVE_INFINITY){
+                        console.log("Negative Weight Cycle exist");
+                        return;
+                    }
+
+                }
+            }
+        }
+
         console.log(distanceArrray);
     }
 }
@@ -66,6 +91,7 @@ bellmanfordGraph.createGraph(2, new Vertex(2, 3, 2))
 bellmanfordGraph.createGraph(3, new Vertex(3, 4, 4))
 
 bellmanfordGraph.createGraph(4, new Vertex(4, 1, -1))
+// bellmanfordGraph.createGraph(4, new Vertex(4, 1, -10)) //Negative Weight Cycle Exist
 
 bellmanfordGraph.bellmanford(0)
 
