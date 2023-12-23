@@ -4,6 +4,9 @@
 
 //Step 1:-- Perfom operation V-1 times
 
+
+ //Bellmanford does not work for the negative weight cycle
+
 class Vertex{
     constructor(src, dest, wegt){
         this.source = src;
