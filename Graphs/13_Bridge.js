@@ -109,4 +109,8 @@ const discoveryArray= new Array(totalVertex)
 const lowestArray = new Array(totalVertex)
 const visitedArray= new Array(totalVertex).fill(false)
 
-bridgeAlgo.findBridge(0, visitedArray, discoveryArray, lowestArray)
+for(let i=0; i< visitedArray.length; i++){
+    if(visitedArray[i] === false){
+        bridgeAlgo.findBridge(0, visitedArray, discoveryArray, lowestArray)
+    }
+}
