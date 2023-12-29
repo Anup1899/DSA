@@ -20,11 +20,11 @@ class BFS{
         this.adjacencyArr[index].push(vertexInfo)
     }
 
-    bfsForGraph(){
+    bfsForGraph(current){
         const visitedArray = new Array(this.adjacencyArr.length).fill(false);
 
         const queue = []
-        queue[0] = 0;
+        queue[current] = current;
 
         let str = ""
 
