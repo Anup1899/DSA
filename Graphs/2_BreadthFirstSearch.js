@@ -75,4 +75,4 @@ bfsGraph.createGraph(5, new Vertex(5,6))
 bfsGraph.createGraph(6, new Vertex(6,5))
 
 
-bfsGraph.bfsForGraph();
+bfsGraph.bfsForGraph(0);
