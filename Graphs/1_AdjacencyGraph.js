@@ -60,12 +60,12 @@ class Adjacency_Graph{
 const graph = new Adjacency_Graph(4);
 graph.createGraph(0, new Edge(0,2,2))
 
-graph.createGraph(1, new Edge(1,2.,0))
+graph.createGraph(1, new Edge(1,2,0))
 graph.createGraph(1, new Edge(1,3,0))
 
 graph.createGraph(2, new Edge(2,0,2))
 graph.createGraph(2, new Edge(2,3,-1))
-graph.createGraph(2, new Edge(2,1,10))
+graph.createGraph(2, new Edge(2,1,0))
 
 graph.createGraph(3, new Edge(3,1,0))
 graph.createGraph(3, new Edge(3,2,-1))
