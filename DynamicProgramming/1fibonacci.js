@@ -6,23 +6,47 @@
 
 
 
-const memoize = new Map();
-function fibonacci(n){
-    if(n===0 || n== 1){
-        return n
+// Approach 1:-- Memoization + Recurstion
+
+function fibonacci_Memo(n, memoize = new Map() ){
+    if(n <=1){
+        return n;
     }
+
     if(memoize.has(n)){
         return memoize.get(n)
     }
 
-    const lastEleme = fibonacci(n-1)
-    const secondlasEleme =  fibonacci(n-2)
+    const lastEle = fibonacci_Memo(n-1, memoize)
+    const secondLastEle = fibonacci_Memo(n-2, memoize)
 
-    memoize.set(n, lastEleme + secondlasEleme)
+    memoize.set(n, lastEle + secondLastEle);
 
-    return lastEleme + secondlasEleme
-    // return fibonacci(n) + fibonacci(n-1)
+    return lastEle + secondLastEle;
 }
 
-const getSum = fibonacci(10)
-console.log(getSum);
+
+//Approach 2: Tabulation
+
+function fibonacci_Tab(n){
+    if(n<=1){
+        return n
+    }
+
+    const fibo_sequence  = [0,1]
+
+    for(let i=2; i<=n; i++){
+        let fibo_sum = fibo_sequence[i-1] + fibo_sequence[i-2]
+
+        fibo_sequence[i] = fibo_sum 
+        
+    }
+
+    return fibo_sequence[n]
+}
+
+let x = 7
+console.log(
+    fibonacci_Memo(x)
+);
+console.log(fibonacci_Tab(x));
