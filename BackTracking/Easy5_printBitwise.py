@@ -1,0 +1,1 @@
+def PrintBitwise(n, arr):
