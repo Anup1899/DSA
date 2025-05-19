@@ -9,7 +9,7 @@ const maze = [
 
 function ratInMaze(maze){
 
-    for(let i=0; i< maze.length)
+    // for(let i=0; i< maze.length)
    
 
 
