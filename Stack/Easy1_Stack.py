@@ -35,6 +35,26 @@ class Stack:
         if(self.isEmpty()):
             return -1
         return self.head.data
+    
+    def pushBottom(self, data):
+        if(self.isEmpty()):
+            self.push(data)
+            return
+        
+        bottomNode = self.head
+        while(bottomNode.prev != None):
+            bottomNode = bottomNode.prev
+        
+        newNode = Node(data)
+        newNode.next = bottomNode
+        bottomNode.prev = newNode
+    
+    def printStack(self):
+        pointer = self.head
+        while(pointer):
+            print(str(pointer.data))
+            pointer = pointer.prev
+
         
 
 
@@ -44,12 +64,22 @@ stack.push(2)
 stack.push(3)
 stack.push(4)
 
-print(stack.pop())
-print(stack.pop())
-print(stack.pop())
+# print(stack.pop())
+# print(stack.pop())
+# print(stack.pop())
 
-stack.push(5)
-stack.push(6)
-stack.push(7)
+# stack.push(5)
+# stack.push(6)
+# stack.push(7)
 
-print(stack.peek())
+stack.pushBottom(0)
+
+stack.printStack()
+
+# print(stack.pop())
+# print(stack.pop())
+# print(stack.pop())
+# print(stack.pop())
+# print(stack.pop())
+
+# print(stack.peek())
