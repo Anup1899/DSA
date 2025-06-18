@@ -1,3 +1,5 @@
+from collections import deque;
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -21,7 +23,7 @@ class Tree:
         return node
     
     def printPreOrder(self, node):
-        if(node == None):
+        if(node is None):
             return
 
         print(node.data)
@@ -44,6 +46,20 @@ class Tree:
         self.printPostOrder(node.right)
         print(node.data)
 
+    def printLevelOrder(self, root):
+        if root is None:
+            return
+        
+        queue = deque([root])
+        
+        while queue:
+            node = queue.popleft()
+            print(node.data)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
 
 treeNode = [1,2,4,-1,-1, 5, -1, -1, 3, -1, 6, -1, -1] #PreOrder Array
  
@@ -55,6 +71,8 @@ print("InOrder")
 binaryTree.printInOrder(tree)
 print("PostOrder")
 binaryTree.printPostOrder(tree)
+print("LevelOrder")
+binaryTree.printLevelOrder(tree)
 # print(
 # binaryTree.tree
 # )
