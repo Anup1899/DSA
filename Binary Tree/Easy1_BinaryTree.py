@@ -65,16 +65,16 @@ treeNode = [1,2,4,-1,-1, 5, -1, -1, 3, -1, 6, -1, -1] #PreOrder Array
  
 binaryTree = Tree()
 tree = binaryTree.buildTree(treeNode)
+
 print("PreOrder")
 binaryTree.printPreOrder(tree)
+
 print("InOrder")
 binaryTree.printInOrder(tree)
+
 print("PostOrder")
 binaryTree.printPostOrder(tree)
+
 print("LevelOrder")
 binaryTree.printLevelOrder(tree)
-# print(
-# binaryTree.tree
-# )
-# binaryTree.printPreOrder()
         
